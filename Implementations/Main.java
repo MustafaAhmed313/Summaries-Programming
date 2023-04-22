@@ -5,6 +5,19 @@ public class Main {
         TestSinglyLinkedList();
         TestCircularlyLinkedList();
         TestDoublyLinkedList();
+        TestCircularQueue();
+    }
+    public static void TestCircularQueue() {
+        CircularQueue queue = new CircularQueue(3);
+        queue.enQueue(1);
+        queue.enQueue(2);
+        queue.enQueue(3);
+        queue.enQueue(4);
+        System.out.println(queue.Rear());
+        queue.isFull();
+        queue.deQueue();
+        queue.enQueue(4);
+        System.out.println(queue.Rear());
     }
     public static void TestDoublyLinkedList() {
         DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
