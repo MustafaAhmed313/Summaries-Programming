@@ -7,6 +7,18 @@ public class Main {
         TestDoublyLinkedList();
         TestCircularQueue();
         TestDeque();
+        TestArrayList();
+    }
+    public static void TestArrayList() {
+        MyArrayList<Integer> a = new MyArrayList<>();
+        a.add(3);
+        a.add(1);
+        a.add(4);
+        a.add(5);
+        a.add(6);
+        a.add(7);
+        for (var e : a)
+            if (e != null) System.out.print(e + " ");
     }
     public static void TestDeque() {
         MyDeque<Integer> d = new MyDeque<>();
