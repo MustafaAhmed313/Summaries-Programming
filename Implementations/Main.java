@@ -6,6 +6,17 @@ public class Main {
         TestCircularlyLinkedList();
         TestDoublyLinkedList();
         TestCircularQueue();
+        TestDeque();
+    }
+    public static void TestDeque() {
+        MyDeque<Integer> d = new MyDeque<>();
+        d.addFirst(1);
+        d.addFirst(2);
+        d.addFirst(3);
+        d.addFirst(4);
+        d.addFirst(5);
+        d.addFirst(6);
+        for (var e : d) System.out.print(e + " ");
     }
     public static void TestCircularQueue() {
         CircularQueue queue = new CircularQueue(3);
