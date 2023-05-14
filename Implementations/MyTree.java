@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public interface MyTree<T> extends Iterable<T> {
+public interface MyTree<T> {
     TreeNode<T> root();
     TreeNode<T> parent(TreeNode<T> n) throws IllegalArgumentException;
     Iterable<TreeNode<T>> children(TreeNode<T> n)throws IllegalArgumentException;
@@ -10,7 +10,5 @@ public interface MyTree<T> extends Iterable<T> {
     boolean isRoot(TreeNode<T> n) throws IllegalArgumentException;
     int size();
     boolean isEmpty();
-    @Override
-    Iterator<T> iterator();
     Iterable<TreeNode<T>> nodes();
 }

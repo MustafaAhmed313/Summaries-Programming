@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
-
 public class MyBinaryTree<T> implements MyTree<T> {
-    TreeNode<T> root = null;
+    TreeNode<T> root;
     int size;
     public MyBinaryTree(){size = 0;}
     @Override
@@ -69,6 +68,7 @@ public class MyBinaryTree<T> implements MyTree<T> {
         throws IllegalArgumentException{
         if (n == null) throw new IllegalArgumentException("Null TreeNode!");
         if (!isExternal(n)) throw new IllegalArgumentException("Must be External!");
+        size++;
         if (!t1.isEmpty()) {
             size += t1.size;
             n.left = t1.root;
@@ -101,24 +101,37 @@ public class MyBinaryTree<T> implements MyTree<T> {
     }
     @Override
     public boolean isExternal(TreeNode<T> n) throws IllegalArgumentException {
+        if (n == null) throw new IllegalArgumentException("Null TreeNode!");
         return n.left == null && n.right == null;
     }
     @Override
     public boolean isInternal(TreeNode<T> n) throws IllegalArgumentException {
+        if (n == null) throw new IllegalArgumentException("Null TreeNode!");
         return n.parent != null && (n.right != null || n.left != null);
     }
     @Override
-    public boolean isRoot(TreeNode<T> n) throws IllegalArgumentException {return n == root;}
+    public boolean isRoot(TreeNode<T> n) throws IllegalArgumentException {
+        if (n == null) throw new IllegalArgumentException("Null TreeNode!");
+        return n == root;
+    }
     @Override
     public int size() {return size;}
     @Override
     public boolean isEmpty() {return size == 0;}
-    @Override
-    public Iterator<T> iterator() {
-        return null;
+
+    private void inOrder(TreeNode<T> n, ArrayList<TreeNode<T>> list) {
+        if (left(n) != null)
+            inOrder(left(n) , list);
+        list.add(n);
+        if (right(n) != null)
+            inOrder(right(n) , list);
+    }
+    private Iterable<TreeNode<T>> inorderSet() {
+        ArrayList<TreeNode<T>> nodes = new ArrayList<>();
+        if (!isEmpty()) inOrder(root() , nodes);
+        return nodes;
     }
     @Override
-    public Iterable<TreeNode<T>> nodes() {
-        return null;
-    }
+    public Iterable<TreeNode<T>> nodes() {return inorderSet();}
+
 }
