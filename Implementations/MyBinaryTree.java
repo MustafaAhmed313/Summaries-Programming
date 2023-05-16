@@ -140,17 +140,17 @@ public class MyBinaryTree<T> implements MyTree<T> {
             inOrder(right(n) , list);
         list.add(n);
     }
-    public Iterable<TreeNode<T>> inorderSet() {
+    private Iterable<TreeNode<T>> inorderSet() {
         ArrayList<TreeNode<T>> nodes = new ArrayList<>();
         if (!isEmpty()) inOrder(root() , nodes);
         return nodes;
     }
-    public Iterable<TreeNode<T>> preorderSet() {
+    private Iterable<TreeNode<T>> preorderSet() {
         ArrayList<TreeNode<T>> nodes = new ArrayList<>();
         if (!isEmpty()) preOrder(root() , nodes);
         return nodes;
     }
-    public Iterable<TreeNode<T>> postorderSet() {
+    private Iterable<TreeNode<T>> postorderSet() {
         ArrayList<TreeNode<T>> nodes = new ArrayList<>();
         if (!isEmpty()) preOrder(root() , nodes);
         return nodes;
