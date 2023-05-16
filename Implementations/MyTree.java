@@ -10,5 +10,7 @@ public interface MyTree<T> {
     boolean isRoot(TreeNode<T> n) throws IllegalArgumentException;
     int size();
     boolean isEmpty();
-    Iterable<TreeNode<T>> nodes();
+    Iterable<TreeNode<T>> nodesInorder();
+    Iterable<TreeNode<T>> nodesPreorder();
+    Iterable<TreeNode<T>> nodesPostorder();
 }

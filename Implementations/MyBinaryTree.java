@@ -126,12 +126,39 @@ public class MyBinaryTree<T> implements MyTree<T> {
         if (right(n) != null)
             inOrder(right(n) , list);
     }
-    private Iterable<TreeNode<T>> inorderSet() {
+    private void preOrder(TreeNode<T> n, ArrayList<TreeNode<T>> list) {
+        list.add(n);
+        if (left(n) != null)
+            inOrder(left(n) , list);
+        if (right(n) != null)
+            inOrder(right(n) , list);
+    }
+    private void postOrder(TreeNode<T> n, ArrayList<TreeNode<T>> list) {
+        if (left(n) != null)
+            inOrder(left(n) , list);
+        if (right(n) != null)
+            inOrder(right(n) , list);
+        list.add(n);
+    }
+    public Iterable<TreeNode<T>> inorderSet() {
         ArrayList<TreeNode<T>> nodes = new ArrayList<>();
         if (!isEmpty()) inOrder(root() , nodes);
         return nodes;
     }
+    public Iterable<TreeNode<T>> preorderSet() {
+        ArrayList<TreeNode<T>> nodes = new ArrayList<>();
+        if (!isEmpty()) preOrder(root() , nodes);
+        return nodes;
+    }
+    public Iterable<TreeNode<T>> postorderSet() {
+        ArrayList<TreeNode<T>> nodes = new ArrayList<>();
+        if (!isEmpty()) preOrder(root() , nodes);
+        return nodes;
+    }
     @Override
-    public Iterable<TreeNode<T>> nodes() {return inorderSet();}
-
+    public Iterable<TreeNode<T>> nodesInorder() {return inorderSet();}
+    @Override
+    public Iterable<TreeNode<T>> nodesPreorder() {return preorderSet();}
+    @Override
+    public Iterable<TreeNode<T>> nodesPostorder() {return postorderSet();}
 }
