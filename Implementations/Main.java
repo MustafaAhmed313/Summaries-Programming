@@ -1,13 +1,23 @@
-import java.sql.SQLOutput;
-
+import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
-        TestSinglyLinkedList();
-        TestCircularlyLinkedList();
-        TestDoublyLinkedList();
-        TestCircularQueue();
-        TestDeque();
-        TestArrayList();
+//        TestSinglyLinkedList();
+//        TestCircularlyLinkedList();
+//        TestDoublyLinkedList();
+//        TestCircularQueue();
+//        TestDeque();
+//        TestArrayList();
+        TestPositionList();
+    }
+    public static void TestPositionList() {
+        PositionList<Integer> list = new PositionList<>();
+        list.addFirst(1);
+        list.addFirst(2);
+        list.addFirst(3);
+        list.addFirst(4);
+        list.addFirst(5);
+        list.addFirst(6);
+        System.out.println(list);
     }
     public static void TestArrayList() {
         MyArrayList<Integer> a = new MyArrayList<>();

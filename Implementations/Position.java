@@ -1,4 +1,4 @@
-public class Position <E> {
+public class Position<E> {
     E val;
     Position<E> prev, next;
     Position(E val) {

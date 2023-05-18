@@ -1,7 +1,7 @@
 import java.util.NoSuchElementException;
 public class PositionList <E> {
     Position<E> head, tail;
-    int sz;
+    private int sz;
     public PositionList() {
         head = new Position<>(null, null, null);
         tail = new Position<>(null, head, null);
