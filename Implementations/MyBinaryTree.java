@@ -73,8 +73,8 @@ public class MyBinaryTree<T> implements MyTree<T> {
             t1.root.parent = n;
             t1.size = 0;
         }
-        if (t2 != null && n.left == null) {
-            n.left = t2.root;
+        if (t2 != null && n.right == null) {
+            n.right = t2.root;
             size += t2.size;
             t2.root.parent = n;
             t2.size = 0;
