@@ -1,12 +1,12 @@
 import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
-//        TestSinglyLinkedList();
-//        TestCircularlyLinkedList();
-//        TestDoublyLinkedList();
-//        TestCircularQueue();
-//        TestDeque();
-//        TestArrayList();
+        TestSinglyLinkedList();
+        TestCircularlyLinkedList();
+        TestDoublyLinkedList();
+        TestCircularQueue();
+        TestDeque();
+        TestArrayList();
         TestPositionList();
     }
     public static void TestPositionList() {

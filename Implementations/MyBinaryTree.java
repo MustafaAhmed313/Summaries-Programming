@@ -67,37 +67,31 @@ public class MyBinaryTree<T> implements MyTree<T> {
     public void attach(TreeNode<T> n , MyBinaryTree<T> t1 , MyBinaryTree<T> t2)
         throws IllegalArgumentException{
         if (n == null) throw new IllegalArgumentException("Null TreeNode!");
-        if (!isExternal(n)) throw new IllegalArgumentException("Must be External!");
-        size++;
-        if (!t1.isEmpty()) {
-            size += t1.size;
+        if (t1 != null && n.left == null) {
             n.left = t1.root;
+            size += t1.size;
             t1.root.parent = n;
-            t1.root = null;
             t1.size = 0;
         }
-        if (!t2.isEmpty()) {
+        if (t2 != null && n.left == null) {
+            n.left = t2.root;
             size += t2.size;
-            n.right = t2.root;
             t2.root.parent = n;
-            t2.root = null;
             t2.size = 0;
         }
     }
     public T remove(TreeNode<T> n) throws IllegalArgumentException {
         if (n == null) throw new IllegalArgumentException("Null TreeNode!");
-        if (!isExternal(n)) throw new IllegalArgumentException("Can't be Removed!");
-        if (n == root) {
-           root = null;
-           size = 0;
-           return n.e;
+        if (n.left != null &&  n.right != null) throw new IllegalArgumentException("Can't be Removed!");
+        TreeNode<T> child = (n.left != null)? n.left : n.right;
+        if (child != null) child.parent = n.parent;
+        if (n == root) {root = child;}
+        else {
+            if (n.parent.left == n) n.parent.left = null;
+            else n.parent.right = null;
         }
-        T e =  n.e;
-        if (n.parent.left == n) n.parent.left = null;
-        else n.parent.right = null;
-        n.parent = n;
-        n.e = null;
-        return e;
+        size--;
+        return n.e;
     }
     @Override
     public boolean isExternal(TreeNode<T> n) throws IllegalArgumentException {
@@ -129,15 +123,15 @@ public class MyBinaryTree<T> implements MyTree<T> {
     private void preOrder(TreeNode<T> n, ArrayList<TreeNode<T>> list) {
         list.add(n);
         if (left(n) != null)
-            inOrder(left(n) , list);
+            preOrder(left(n) , list);
         if (right(n) != null)
-            inOrder(right(n) , list);
+            preOrder(right(n) , list);
     }
     private void postOrder(TreeNode<T> n, ArrayList<TreeNode<T>> list) {
         if (left(n) != null)
-            inOrder(left(n) , list);
+            postOrder(left(n) , list);
         if (right(n) != null)
-            inOrder(right(n) , list);
+            postOrder(right(n) , list);
         list.add(n);
     }
     private Iterable<TreeNode<T>> inorderSet() {
