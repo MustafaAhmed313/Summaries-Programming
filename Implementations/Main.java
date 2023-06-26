@@ -8,9 +8,22 @@ public class Main {
         TestDeque();
         TestArrayList();
         TestPositionList();
+        TestUnorderedMap();
+    }
+    public static void TestUnorderedMap() {
+        MyMap<Character , Integer> m = new UnsortedTableMap<>();
+        m.put('a', 1);
+        m.put('b', 2);
+        m.put('c', 3);
+        m.put('d', 4);
+        m.put('e', 5);
+        for (var e : m.entrySet()) System.out.println(e.getKey() + " " + e.getValue());
+        System.out.println(m.remove('d')); //4
+        System.out.println(m.put('a', 7)); //1
+        System.out.println(m.get('e')); //5
     }
     public static void TestPositionList() {
-        PositionList<Integer> list = new PositionList<>();
+        PositionList<Integer> list = new MyPositionList<>();
         list.addFirst(1);
         list.addFirst(2);
         list.addFirst(3);

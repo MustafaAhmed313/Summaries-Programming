@@ -65,7 +65,7 @@ public class MyPositionList<E> implements PositionList<E> {
         Node<E> N = validate(p);
         Node<E> pred = N.prev;
         Node<E> succ = N.next;
-        E val = N.getElement();
+        E val = N.getElement(); 
         pred.next = succ;
         succ.prev = pred;
         N = null;
@@ -73,7 +73,7 @@ public class MyPositionList<E> implements PositionList<E> {
     }
 }
 class Node<E> implements Position<E>{
-    private E val;
+    E val;
     Node<E> next , prev;
     public Node(E val , Node<E> next , Node<E> prev) {
         this.next = next;
