@@ -9,6 +9,19 @@ public class Main {
         TestArrayList();
         TestPositionList();
         TestUnorderedMap();
+        TestChainHashMap();
+    }
+    public static void TestChainHashMap() {
+        MyMap<Character , Integer> m = new ChainHashMap<>();
+        m.put('a', 1);
+        m.put('b', 2);
+        m.put('c', 3);
+        m.put('d', 4);
+        m.put('e', 5);
+        for (var e : m.entrySet()) System.out.println(e.getKey() + " " + e.getValue());
+        System.out.println(m.remove('d')); //4
+        System.out.println(m.put('a', 7)); //1
+        System.out.println(m.get('e'));
     }
     public static void TestUnorderedMap() {
         MyMap<Character , Integer> m = new UnsortedTableMap<>();
